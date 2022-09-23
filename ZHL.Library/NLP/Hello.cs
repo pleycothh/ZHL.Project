@@ -30,6 +30,5 @@ namespace ZHL.Library.NLP
                 return "What did you say?";
             }
         }
-
     }
 }
