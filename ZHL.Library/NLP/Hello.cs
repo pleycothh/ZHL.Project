@@ -20,8 +20,7 @@ namespace ZHL.Library.NLP
 
             var result = inputList.Where(x => x.ToLower().Contains("hello") || x.ToLower().Contains("hi"));
 
-
-
+            
             if (result is not null && result.ToList().Count >= 1)
             {
                 return "Hi, there!"; // <- use yield return here.
