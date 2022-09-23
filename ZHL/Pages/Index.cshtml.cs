@@ -16,13 +16,25 @@ namespace ZHL.Pages
         }
 
         [BindProperty]
-        public string CacheName { get; set; }
+        public string UserInput { get; set; }
 
-        public void OnGet()
+        public string Answer { get; set; }
+        public DateTime DateTimeNow { get; set; }
+
+
+        public void OnGet(string userInput)
         {
-            CacheName = _runnerMain.Run("To You");
-            log.Info($"CacheName passed from Library is: {CacheName}");
+            
 
+            Answer = _runnerMain.Run(userInput);
+            log.Info($"CacheName passed from Library is: {Answer}");
+
+        }
+
+        public IActionResult OnPost()
+        {
+            Console.WriteLine("On Posted called");
+            return RedirectToPage("./Index", new { UserInput });
         }
     }
 }
