@@ -19,6 +19,8 @@ namespace ZHL.Library
 
             /// NLP Model
             builder.RegisterType<Hello>().As<IRegexIntro>();
+            builder.RegisterType<Name>().As<IRegexIntro>();
+            builder.RegisterType<IDK>().As<IRegexIntro>();
             
         }
     }// test 

@@ -2,6 +2,7 @@
 using log4net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZHL.Library.Models;
 
 namespace ZHL.Pages
 {
@@ -18,16 +19,17 @@ namespace ZHL.Pages
         [BindProperty]
         public string UserInput { get; set; }
 
-        public string Answer { get; set; }
+        public AnswerModel Answer { get; set; }
         public DateTime DateTimeNow { get; set; }
+        
 
 
         public void OnGet(string userInput)
         {
-            
 
-            Answer = _runnerMain.Run(userInput);
-            log.Info($"CacheName passed from Library is: {Answer}");
+
+            Answer = _runnerMain.Run(userInput is null? "hi": userInput) ;
+            log.Info($"Answer passed from Library is: {Answer.Answer}, with rate: {Answer.AnswerRate}");
 
         }
 
