@@ -41,7 +41,7 @@ namespace ZHL.Library.Keras
             foreach (var step in range(1, training_steps + 1))
             {
                 // Run the optimization to update W and b values.
-                // Wrap computation inside a GradientTape for automatic differentiation.
+                // Wrap computation inside a GradientTape for automatic differentiation. 
                 using var g = tf.GradientTape();
                 // Linear regression (Wx + b).
 
