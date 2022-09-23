@@ -8,9 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta2" />
+    <PackageReference Include="NumSharp" Version="0.30.0" />
+    <PackageReference Include="TensorFlow.Keras" Version="0.7.0" />
+    <PackageReference Include="TensorFlow.NET" Version="0.70.1" />
   </ItemGroup>
 
   <ItemGroup>
