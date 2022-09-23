@@ -17,10 +17,38 @@
             </li>
         </ul>
     </div>
-</nav>
+</nav>  
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>World.</p>
-    <p>@Model.CacheName</p>
+<div class="container mt-4">
+
+    <div class="card mx-auto" style="max-width:800px">
+
+        <!-- Text Area -->
+        <div class="card-body p-4" style="height: 500px; overflow: auto">
+
+            <div class="d-flex align-items-baseline mb-4">
+                <div class="pe-2">
+                    <div>
+                        <div class="card card-text d-inline-block p-2 px-3 m-1"> Hi, world!</div>
+                        <div class="small">01:10PM</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- input bar -->
+        <div class="card-footer bg-white position-absolute w-100 bottom-0 m-0 p-1">
+            <div class="input-group">
+                <input type="text" class="form-control border-0" placeholder="Input..." />
+                <div class="input-group-text bg-transparent border-0">
+                    <button class="btn btn-light text-secondary" style="font-size:24px">Voice<i class="fa fa-microphone"></i></button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 </div>
