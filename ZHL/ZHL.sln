@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZHL.GUI", "ZHL.GUI.csproj", "{533E826F-65C8-4290-88C9-88CC8B7D6350}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZHL.Library", "..\ZHL.Library\ZHL.Library.csproj", "{9B68AFB3-CC0F-46A6-A380-834B28D202B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{533E826F-65C8-4290-88C9-88CC8B7D6350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533E826F-65C8-4290-88C9-88CC8B7D6350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533E826F-65C8-4290-88C9-88CC8B7D6350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533E826F-65C8-4290-88C9-88CC8B7D6350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B68AFB3-CC0F-46A6-A380-834B28D202B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B68AFB3-CC0F-46A6-A380-834B28D202B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B68AFB3-CC0F-46A6-A380-834B28D202B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B68AFB3-CC0F-46A6-A380-834B28D202B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2D1C409-4AC4-4171-BD21-3ED870C78859}
+	EndGlobalSection
+EndGlobal
