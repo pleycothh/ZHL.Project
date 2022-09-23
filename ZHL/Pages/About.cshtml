@@ -1,26 +1,19 @@
 ﻿@page
-@model IndexModel
+@model ZHL.GUI.Pages.AboutModel
 @{
     ViewData["Title"] = "Home page";
 }
-
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-pills bg-white border-bottom box-shadow mb-3">
     <div class="container">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link active" asp-area="" asp-page="./Index"><strong>Home</strong></a>
+                <a class="nav-link text-dark" asp-area="" asp-page="./Index">Home</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-page="./About">About</a>
+                <a class="nav-link active" asp-area="" asp-page="./About"><strong>About</strong></a>
             </li>
         </ul>
     </div>
 </nav>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>World.</p>
-    <p>@Model.CacheName</p>
-</div>

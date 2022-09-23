@@ -45,7 +45,7 @@ namespace ZHL.Library.Keras
                 using var g = tf.GradientTape();
                 // Linear regression (Wx + b).
 
-                var pred = W * X + b;
+                var pred = W + X + b; // eooro" W * X + b
                 // Mean square error.
                 var loss = tf.reduce_sum(tf.pow(pred - Y, 2)) / (2 * n_samples);
                 // should stop recording
@@ -57,7 +57,7 @@ namespace ZHL.Library.Keras
 
                 if (step % display_step == 0)
                 {
-                    pred = W * X + b;
+                    pred = W + X + b; // Error: W*X + b
                     loss = tf.reduce_sum(tf.pow(pred - Y, 2)) / (2 * n_samples);
                     print($"step: {step}, loss: {loss.numpy()}, W: {W.numpy()}, b: {b.numpy()}");
                 }
