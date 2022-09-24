@@ -25,22 +25,36 @@
     <div class="card mx-auto" style="max-width:800px">
 
 
-        @foreach(var chatItem in Model.chatHistory.ChatItems)
-        {
+       
             <!-- Text Area -->
             <div class="card-body p-4" style="height: 500px; overflow: auto">
+            <div class="d-flex align-items-baseline mb-4">
+                <ul style="list-style: none;">
+                    @foreach (var chatItem in Model.chatHistory)
+                    {
+                        <li>
+                            <div class="pe-2">
+                                <div>
+                                    @if(!chatItem.IsUser)
+                                    {
+                                    <div class="card text-white bg-success card-text d-inline-block p-2 px-3 m-1">@chatItem.TextItem.Answer</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="card card-text d-inline-block p-2 px-3 m-1">@chatItem.TextItem.Answer</div>
+                                    }
+                                    <div class="small">@chatItem.Created</div>
+                                    <div class="small"> Answer Rate: @chatItem.TextItem.AnswerRate</div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    </ul>
 
-                <div class="d-flex align-items-baseline mb-4">
-                    <div class="pe-2">
-                        <div>
-                            <div class="card card-text d-inline-block p-2 px-3 m-1">@chatItem.TextItem.Answer</div>
-                            <div class="small">@chatItem.Created</div>
-                            <div class="small">@chatItem.TextItem.AnswerRate</div>
-                        </div>
-                    </div>
+                    <div/>
                 </div>
             </div>
-        }
+       
       
         
         

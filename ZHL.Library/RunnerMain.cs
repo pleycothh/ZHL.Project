@@ -14,7 +14,7 @@ namespace ZHL.Library
 
         private static readonly ILog log = LogManager.GetLogger("file");
 
-        public ChatHistory Run(string input)
+        public List<ChatItem> Run(string input)
         {
             /// Load from voic and process
             /// Dump the voic result to speach module
@@ -24,6 +24,7 @@ namespace ZHL.Library
             // Add to Chat history
 
             ChatHistory chatHistory = new();
+            List<ChatItem> chatItemList = new();
             AggregateAnswer answers = new();
 
             chatHistory.Push(new ChatItem(id: 2, textItem: new AnswerModel(input), isUser: true));
@@ -38,7 +39,7 @@ namespace ZHL.Library
 
             log.Info($"Take library input as {input}");
             log.Info($"Library return result as {result}");
-            return chatHistory;
+            return chatHistory.ChatItems;
 
         }
     }

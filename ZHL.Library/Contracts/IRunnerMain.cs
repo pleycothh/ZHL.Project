@@ -4,6 +4,6 @@ namespace ZHL.Library.Contracts
 {
     public interface IRunnerMain
     {
-        ChatHistory Run(string input);
+        List<ChatItem> Run(string input);
     }
 }
