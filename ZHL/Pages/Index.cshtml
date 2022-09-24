@@ -24,24 +24,27 @@
 
     <div class="card mx-auto" style="max-width:800px">
 
-        <!-- Text Area -->
-        <div class="card-body p-4" style="height: 500px; overflow: auto">
 
-            <div class="d-flex align-items-baseline mb-4">
-                <div class="pe-2">
-                    <div>
-                        <div class="card card-text d-inline-block p-2 px-3 m-1">@Model.Answer.Answer</div>
-                        <div class="small">@Model.DateTimeNow</div>
+        @foreach(var chatItem in Model.chatHistory.ChatItems)
+        {
+            <!-- Text Area -->
+            <div class="card-body p-4" style="height: 500px; overflow: auto">
+
+                <div class="d-flex align-items-baseline mb-4">
+                    <div class="pe-2">
+                        <div>
+                            <div class="card card-text d-inline-block p-2 px-3 m-1">@chatItem.TextItem.Answer</div>
+                            <div class="small">@chatItem.Created</div>
+                            <div class="small">@chatItem.TextItem.AnswerRate</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+      
         
         
         <form method="post">
-                
-          
-
             <!-- input bar -->
             <div class="card-footer bg-white position-absolute w-100 bottom-0 m-0 p-1">
                 <div class="input-group">
@@ -51,12 +54,8 @@
                     <div class="input-group-text bg-transparent border-0">
                         <button class="btn btn-light text-secondary" type="submit" style="font-size:24px">Voice<i class="fa fa-microphone"></i></button>
                     </div>
-
                 </div>
             </div>
-
         </form>
-
     </div>
-
 </div>

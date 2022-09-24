@@ -11,7 +11,7 @@ namespace ZHL.Library.Models
         public int AnswerRate { get; set; }
         public string Answer { get; set; }
 
-        public AnswerModel(string answer, int rate)
+        public AnswerModel(string answer, int rate = -1)
         {
             AnswerRate = rate;
             Answer = answer;

@@ -19,7 +19,7 @@ namespace ZHL.Pages
         [BindProperty]
         public string UserInput { get; set; }
 
-        public AnswerModel Answer { get; set; }
+        public ChatHistory chatHistory { get; set; }
         public DateTime DateTimeNow { get; set; }
         
 
@@ -27,9 +27,9 @@ namespace ZHL.Pages
         public void OnGet(string userInput)
         {
 
-
-            Answer = _runnerMain.Run(userInput is null? "hi": userInput) ;
-            log.Info($"Answer passed from Library is: {Answer.Answer}, with rate: {Answer.AnswerRate}");
+            // append user input
+            chatHistory = _runnerMain.Run(userInput is null? "hi": userInput) ;
+            log.Info($"User Input is: {userInput}");
 
         }
 
