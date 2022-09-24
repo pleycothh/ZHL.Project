@@ -1,7 +1,9 @@
-﻿namespace ZHL.Library.Contracts
+﻿using ZHL.Library.Models;
+
+namespace ZHL.Library.Contracts
 {
     public interface IRunnerMain
     {
-        string Run(string input);
+        List<ChatItem> Run(string input);
     }
 }

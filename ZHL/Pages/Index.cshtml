@@ -6,7 +6,7 @@
 
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-pills bg-white border-bottom box-shadow mb-3">
-    <div class="container">
+    <div class="container-fluid">
         <ul class="nav nav-pills">
             <li class="nav-item">
                 <a class="nav-link active" asp-area="" asp-page="./Index"><strong>Home</strong></a>
@@ -15,6 +15,7 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-page="./About">About</a>
             </li>
+
         </ul>
     </div>
 </nav>  
@@ -23,24 +24,41 @@
 
     <div class="card mx-auto" style="max-width:800px">
 
-        <!-- Text Area -->
-        <div class="card-body p-4" style="height: 500px; overflow: auto">
 
+       
+            <!-- Text Area -->
+            <div class="card-body p-4" style="height: 500px; overflow: auto">
             <div class="d-flex align-items-baseline mb-4">
-                <div class="pe-2">
-                    <div>
-                        <div class="card card-text d-inline-block p-2 px-3 m-1">@Model.Answer</div>
-                        <div class="small">@Model.DateTimeNow</div>
-                    </div>
+                <ul style="list-style: none;">
+                    @foreach (var chatItem in Model.chatHistory)
+                    {
+                        <li>
+                            <div class="pe-2">
+                                <div>
+                                    @if(!chatItem.IsUser)
+                                    {
+                                    <div class="card text-white bg-success card-text d-inline-block p-2 px-3 m-1">@chatItem.TextItem.Answer</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="card card-text d-inline-block p-2 px-3 m-1">@chatItem.TextItem.Answer</div>
+                                    }
+                                    <div class="small">@chatItem.Created</div>
+                                    <div class="small"> Answer Rate: @chatItem.TextItem.AnswerRate</div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    </ul>
+
+                    <div/>
                 </div>
             </div>
-        </div>
+       
+      
         
         
         <form method="post">
-                
-          
-
             <!-- input bar -->
             <div class="card-footer bg-white position-absolute w-100 bottom-0 m-0 p-1">
                 <div class="input-group">
@@ -50,12 +68,8 @@
                     <div class="input-group-text bg-transparent border-0">
                         <button class="btn btn-light text-secondary" type="submit" style="font-size:24px">Voice<i class="fa fa-microphone"></i></button>
                     </div>
-
                 </div>
             </div>
-
         </form>
-
     </div>
-
 </div>

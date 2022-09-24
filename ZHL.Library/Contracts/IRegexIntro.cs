@@ -1,7 +1,9 @@
-﻿namespace ZHL.Library.Contracts
+﻿using ZHL.Library.Models;
+
+namespace ZHL.Library.Contracts
 {
     public interface IRegexIntro
     {
-        string Process(string input);
+        IEnumerable<AnswerModel> Process(string input);
     }
 }

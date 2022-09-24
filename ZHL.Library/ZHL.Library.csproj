@@ -16,8 +16,4 @@
     <PackageReference Include="TensorFlow.NET" Version="0.70.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
