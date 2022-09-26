@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ZHL.Library.Contracts;
 using ZHL.Library.Models;
 
-namespace ZHL.Library.NLP
+namespace ZHL.Library.Plugin.RegexPlugin
 {
     public class Hello : IRegexIntro
     {
@@ -21,7 +21,7 @@ namespace ZHL.Library.NLP
 
             if (result is not null && result.ToList().Count >= 1)
             {
-                yield return new AnswerModel(answer: "Hi, there!", rate: 10);
+                yield return new AnswerModel(answer: "Hi, there!", vecValue: 10);
             }
         }
     }

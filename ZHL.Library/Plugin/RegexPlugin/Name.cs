@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ZHL.Library.Contracts;
 using ZHL.Library.Models;
 
-namespace ZHL.Library.NLP
+namespace ZHL.Library.Plugin.RegexPlugin
 {
     public class Name : IRegexIntro
     {
@@ -17,7 +17,7 @@ namespace ZHL.Library.NLP
 
             if (regex.IsMatch(input))
             {
-                yield return new AnswerModel(answer: "My Name is AI", rate: 12);
+                yield return new AnswerModel(answer: "My Name is AI", vecValue: 12);
             }
         }
     }
