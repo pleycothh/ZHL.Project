@@ -12,10 +12,6 @@
         body {
           background-color:#E7E9EB;
         }
-        #myDIV {
-          height:300px;
-          background-color:#FFFFFF;
-        }
         #filter {
           background-color: lightblue;
           width: 300px;
@@ -56,9 +52,8 @@
         </div>
         <form method="post">
 
-            <input placeholder="Enter new filter..." />
-            <button type="submit" asp-for="UpdateList">Add</button>
-
+            <input type="text" asp-for="FilterInput" placeholder="Enter new filter..."  />
+            <button asp-page-handler="AddFilter" type="submit" class="btn btn-primary" asp-route-CacheName="@Model.CacheId" >Add</button>
         </form>
     </div>
         
@@ -89,7 +84,7 @@
                     <input type="text" asp-for="UserInput" class="form-control border-0" placeholder="Input..." />
 
                     <div class="input-group-text bg-transparent border-0">
-                        <button class="btn btn-secondary text-white" type="submit" style="font-size:24px">Send</button>
+                        <button class="btn btn-secondary text-white" type="submit" style="font-size:24px" asp-page-handler="SetItem" asp-route-CacheName="@Model.CacheId">Send</button>
                     </div>
                 </div>
             </div>

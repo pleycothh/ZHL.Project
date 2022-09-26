@@ -26,6 +26,7 @@ namespace ZHL.GUI.Provider
 
             if (result is null)
             {
+                Console.WriteLine("Item Cache is null, empty item list created");
                 return new List<ItemModel>();
             }
             return result;
@@ -33,23 +34,24 @@ namespace ZHL.GUI.Provider
 
         public void SetItemList(string userInput, List<string> filterList, string cacheId)
         {
-            List<ItemModel> items = new();
+           // List<ItemModel> items = new();
             cacheId = cacheId is null ? "-1" : cacheId;
             userInput = userInput is null ? "NULL" : userInput;
+            Console.WriteLine($"Add item with user input: {userInput}");
 
-            items = _memoryCache.Get<List<ItemModel>>(cacheId);
+            //    var items = _memoryCache.Get<List<ItemModel>>(cacheId);
+            //
+            //   if (items is null)
+            //   {
+            //      //allResults = mainRunner.RunBatchAnalysis($@"{Path.Path}", true).GetResults();
+            var items = _mainRunner.Run(userInput, filterList);
+            //    }
+            //    else
+            //    {
+            //        items.AddRange(_mainRunner.Run(userInput, filterList));
+            //    }
+            Console.WriteLine($"Save Item List to cache with chache Id: {cacheId}");
 
-
-
-            if (items is null)
-            {
-                //allResults = mainRunner.RunBatchAnalysis($@"{Path.Path}", true).GetResults();
-                items = _mainRunner.Run(userInput, filterList);
-            }
-            else
-            {
-                items.AddRange(_mainRunner.Run(userInput, filterList));
-            }
             _memoryCache.Set(cacheId, items);
 
         }

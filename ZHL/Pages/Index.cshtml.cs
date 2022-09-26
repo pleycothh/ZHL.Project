@@ -21,7 +21,10 @@ namespace ZHL.Pages
 
         [BindProperty]
         public string UserInput { get; set; }
-        public string CacheId { get; set; } //<<-- no user for now
+        [BindProperty]
+        public string FilterInput { get; set; }
+
+        public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
         public List<string> filterList = new();
         public List<ItemModel> itemList = new();
@@ -30,20 +33,24 @@ namespace ZHL.Pages
         /// <summary>
         /// get filterList and itemList from cache all the time
         /// </summary>
-        public void OnGet(string CacheId)
+        public void OnGet(string cacheId)
         {
+            CacheId = cacheId;
+
             itemList = _itemProvider.GetItemList(CacheId);
             filterList = _filterProvider.GetFilter();
+            Console.WriteLine($"On Get called, Cache Id is : {CacheId}");
+
         }
 
         /// <summary>
         /// submit main form, run analysis, return new result
         /// </summary>
-        public IActionResult OnPost()
+        public IActionResult OnPostSetItem()
         {
 
             /// Question: why User input is null??
-            Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {CacheId}");
+            Console.WriteLine($"On Posted called, User input is {UserInput}, Cache Id is : {CacheId}");
 
             if(UserInput is not null)
             {
@@ -60,13 +67,13 @@ namespace ZHL.Pages
         /// 2: keep the input box as cache
         /// 3: load new filter list to the UI
         /// </summary>
-        public IActionResult OnPostUpdateList()
+        public IActionResult OnPostAddFilter()
         {
 
             /// Question: why User input is null??
-            Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {CacheId}");
+            Console.WriteLine($"On Posted AddFilter called, User input is {FilterInput}, Cache Id is : {CacheId}");
 
-            _filterProvider.SetFilter(filterList);
+            _filterProvider.AddFilter(FilterInput);
            
 
             return RedirectToPage("./Index", new {CacheId });

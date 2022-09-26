@@ -3,6 +3,6 @@
     public interface IFilterListProvider
     {
         List<string> GetFilter();
-        void SetFilter(List<string> filterList);
+        void AddFilter(string filterInput);
     }
 }
