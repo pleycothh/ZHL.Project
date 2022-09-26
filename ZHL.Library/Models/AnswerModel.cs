@@ -8,12 +8,12 @@ namespace ZHL.Library.Models
 {
     public class AnswerModel
     {
-        public int AnswerRate { get; set; }
+        public int VecValue { get; set; }
         public string Answer { get; set; }
 
-        public AnswerModel(string answer, int rate = -1)
+        public AnswerModel(string answer, int vecValue = -1)
         {
-            AnswerRate = rate;
+            VecValue = vecValue;
             Answer = answer;
         }
     }

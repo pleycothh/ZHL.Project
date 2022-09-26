@@ -37,27 +37,15 @@
         <!-- Text Area -->
         <div class="card-body p-4" id="main-chat-area" style="height: 70vh; overflow:auto;">
             <div class="d-flex align-items-baseline mb-4">
-                <ul id="chat-list" style="list-style: none;">
-                    @foreach (var chatItem in Model.chatHistory)
+                <div id="chat-list" style="list-style: none;">
+                    @foreach (var item in Model.itemList)
                     {
-                        <li>
-                            <div class="pe-2" style="margin: 10px">
-                                <div>
-                                    @if(!chatItem.IsUser)
-                                    {
-                                        <div class="card text-white bg-success card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@chatItem.TextItem.Answer</div>
-                                    }
-                                    else
-                                    {
-                                        <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@chatItem.TextItem.Answer</div>
-                                    }
-                                    <div class="small">@chatItem.Created</div>
-                                    <!--div class="small"> Answer Rate: @chatItem.TextItem.AnswerRate</div-->
-                                </div>
-                            </div>
-                        </li>
+                        <div class="pe-2" style="margin: 10px">
+                            <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@item.TextItem.Answer</div>
+                            <div class="small">@item.Created</div>
+                        </div>
                     }
-                </ul>
+                </div>
             </div>
         </div>
 

@@ -15,7 +15,7 @@ namespace ZHL.Library.Models
         {
             _answerList.ForEach(x =>
             {
-                if (_finalAnswer is null || x.AnswerRate > _finalAnswer.AnswerRate)
+                if (_finalAnswer is null || x.VecValue > _finalAnswer.VecValue)
                 {
                     _finalAnswer = x;
                 }
