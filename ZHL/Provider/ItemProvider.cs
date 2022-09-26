@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using ZHL.GUI.Provider.Contracts;
 using ZHL.Library.Contracts;
 using ZHL.Library.Models;
 
 namespace ZHL.GUI.Provider
 {
-    public class ItemProvider
+    public class ItemProvider : IItemProvider
     {
 
         private readonly IMemoryCache _memoryCache;
@@ -17,17 +18,26 @@ namespace ZHL.GUI.Provider
         }
 
 
-        public List<ItemModel> GetCacheItemList(string userId)
+        public List<ItemModel> GetItemList(string CacheId)
         {
-            userId = userId is null ? "-1" : userId;
+            CacheId = CacheId is null ? "-1" : CacheId;
 
-            var result = _memoryCache.Get<List<ItemModel>>(userId);
+            var result = _memoryCache.Get<List<ItemModel>>(CacheId);
 
             if (result is null)
             {
                 return new List<ItemModel>();
             }
             return result;
+        }
+
+        public void SetItemList(string userId, string CacheId)
+        {
+            userId = userId is null ? "-1" : userId;
+
+            // var result = _memoryCache.Set<List<ItemModel>>(userId);
+
+
         }
     }
 }

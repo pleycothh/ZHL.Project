@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZHL.GUI.Provider;
 using ZHL.GUI.Provider.Contracts;
 using ZHL.Library.Models;
 
@@ -11,16 +10,18 @@ namespace ZHL.Pages
     public class IndexModel : PageModel
     {
         private readonly IItemProvider _itemProvider;
+        private readonly IFilterListProvider _filterProvider;
         private static readonly ILog log = LogManager.GetLogger("file");
 
-        public IndexModel(IItemProvider itemProvider)
+        public IndexModel(IItemProvider itemProvider, IFilterListProvider filterProvider)
         {
             _itemProvider = itemProvider;
+            _filterProvider = filterProvider;
         }
 
         [BindProperty]
         public string UserInput { get; set; }
-        //public string UserId { get; set; } <<-- no user for now
+        public string CacheId { get; set; } //<<-- no user for now
 
         public List<string> filterList = new();
         public List<ItemModel> itemList = new();
@@ -29,10 +30,10 @@ namespace ZHL.Pages
         /// <summary>
         /// get filterList and itemList from cache all the time
         /// </summary>
-        public void OnGet(string userInput)
+        public void OnGet(string userInput, string CacheId)
         {
-            itemList = _itemProvider.GetCacheItemList();
-            filterList = _filterProvider.GetFilter(filterList);
+            itemList = _itemProvider.GetItemList(CacheId);
+            filterList = _filterProvider.GetFilter();
         }
 
         /// <summary>
@@ -42,11 +43,11 @@ namespace ZHL.Pages
         {
 
             /// Question: why User input is null??
-            Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {UserId}");
+            Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {CacheId}");
 
-            _itemProvider.SetCacheItemList(UserInput);
+            _itemProvider.SetItemList(UserInput, CacheId);
 
-            return RedirectToPage("./Index", new { UserInput });
+            return RedirectToPage("./Index", new { UserInput, CacheId });
             //return Page();
         }
 
@@ -60,12 +61,12 @@ namespace ZHL.Pages
         {
 
             /// Question: why User input is null??
-            Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {UserId}");
+            Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {CacheId}");
 
             _filterProvider.SetFilter(filterList);
            
 
-            return RedirectToPage("./Index", new { UserInput });
+            return RedirectToPage("./Index", new { UserInput, CacheId });
 
         }
     }
