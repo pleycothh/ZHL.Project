@@ -17,8 +17,8 @@ namespace ZHL.Library
 
             /// Regex Model
             builder.RegisterType<ExactMatch>().As<IRegexIntro>();
-            builder.RegisterType<LooseMatchTwo>().As<IRegexIntro>();
-            builder.RegisterType<LoosMatchOne>().As<IRegexIntro>();
+        //    builder.RegisterType<LooseMatchTwo>().As<IRegexIntro>();
+         //   builder.RegisterType<LoosMatchOne>().As<IRegexIntro>();
             
         }
     }// test 

@@ -44,7 +44,7 @@ namespace ZHL.GUI.Provider
             if (items is null)
             {
                 //allResults = mainRunner.RunBatchAnalysis($@"{Path.Path}", true).GetResults();
-                items = _mainRunner.Run(userInput);
+                items = _mainRunner.Run(userInput, filterList);
             }
             else
             {
