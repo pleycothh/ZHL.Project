@@ -12,7 +12,7 @@ namespace ZHL.Library.Models
         public AnswerModel TextItem { get; set; }
         public DateTime Created { get; set; }
 
-        public ItemModel(int id, AnswerModel textItem, bool isUser)
+        public ItemModel(int id, AnswerModel textItem)
         {
             Id = id;
             TextItem = textItem;

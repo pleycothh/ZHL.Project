@@ -18,11 +18,11 @@ namespace ZHL.GUI.Provider
         }
 
 
-        public List<ItemModel> GetItemList(string CacheId)
+        public List<ItemModel> GetItemList(string cacheId)
         {
-            CacheId = CacheId is null ? "-1" : CacheId;
+            cacheId = cacheId is null ? "-1" : cacheId;
 
-            var result = _memoryCache.Get<List<ItemModel>>(CacheId);
+            var result = _memoryCache.Get<List<ItemModel>>(cacheId);
 
             if (result is null)
             {
@@ -31,12 +31,26 @@ namespace ZHL.GUI.Provider
             return result;
         }
 
-        public void SetItemList(string userId, string CacheId)
+        public void SetItemList(string userInput, string cacheId)
         {
-            userId = userId is null ? "-1" : userId;
+            List<ItemModel> items = new();
+            cacheId = cacheId is null ? "-1" : cacheId;
+            userInput = userInput is null ? "NULL" : userInput;
 
-            // var result = _memoryCache.Set<List<ItemModel>>(userId);
+            items = _memoryCache.Get<List<ItemModel>>(cacheId);
 
+
+
+            if (items is null)
+            {
+                //allResults = mainRunner.RunBatchAnalysis($@"{Path.Path}", true).GetResults();
+                items = _mainRunner.Run(userInput);
+            }
+            else
+            {
+                items.AddRange(_mainRunner.Run(userInput));
+            }
+            _memoryCache.Set(cacheId, items);
 
         }
     }
