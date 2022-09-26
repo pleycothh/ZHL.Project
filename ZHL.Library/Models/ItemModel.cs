@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace ZHL.Library.Models
 {
-    public class ChatItem
+    public class ItemModel
     {
         public int Id { get; set; }
         public AnswerModel TextItem { get; set; }
-        public bool IsUser { get; set; }
         public DateTime Created { get; set; }
 
-        public ChatItem(int id, AnswerModel textItem, bool isUser)
+        public ItemModel(int id, AnswerModel textItem)
         {
             Id = id;
             TextItem = textItem;
-            IsUser = isUser;
             Created = DateTime.Now;
         }
     }

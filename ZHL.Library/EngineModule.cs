@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using ZHL.Library.Contracts;
-using ZHL.Library.Keras;
-using ZHL.Library.NLP;
+using ZHL.Library.Plugin.RegexPlugin;
 
 namespace ZHL.Library
 {
@@ -13,14 +12,13 @@ namespace ZHL.Library
             /// Main Model
             builder.RegisterType<RunnerMain>().As<IRunnerMain>();
 
-            /// Speech recognition Model
-            builder.RegisterType<LinearRegression>().As<ILinearRegression>();
+            /// Word2Vec
 
 
-            /// NLP Model
-            builder.RegisterType<Hello>().As<IRegexIntro>();
-            builder.RegisterType<Name>().As<IRegexIntro>();
-            builder.RegisterType<IDK>().As<IRegexIntro>();
+            /// Regex Model
+            builder.RegisterType<ExactMatch>().As<IRegexIntro>();
+        //    builder.RegisterType<LooseMatchTwo>().As<IRegexIntro>();
+         //   builder.RegisterType<LoosMatchOne>().As<IRegexIntro>();
             
         }
     }// test 

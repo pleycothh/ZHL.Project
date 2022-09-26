@@ -13,7 +13,8 @@ namespace ZHL.GUI
         {
             builder.RegisterModule<EngineModule>();
 
-            builder.RegisterType<ChatHistoryProvider>().As<IChatHistoryProvider>();
+            builder.RegisterType<FilterListProvider>().As<IFilterListProvider>();
+            builder.RegisterType<ItemProvider>().As<IItemProvider>();
         }
     }
 }

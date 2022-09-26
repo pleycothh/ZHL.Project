@@ -4,6 +4,6 @@ namespace ZHL.Library.Contracts
 {
     public interface IRunnerMain
     {
-        List<ChatItem> Run(string input);
+        List<ItemModel> Run(string input, List<string> filterList);
     }
 }

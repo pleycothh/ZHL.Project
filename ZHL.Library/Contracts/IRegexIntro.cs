@@ -4,6 +4,6 @@ namespace ZHL.Library.Contracts
 {
     public interface IRegexIntro
     {
-        IEnumerable<AnswerModel> Process(string input);
+        IEnumerable<AnswerModel> Process(string input, List<string> filterList);
     }
 }
