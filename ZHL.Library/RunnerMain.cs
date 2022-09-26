@@ -24,7 +24,6 @@ namespace ZHL.Library
             // Add to Chat history
 
             List<ItemModel> itemHistory = new();
-            List<ItemModel> chatItemList = new();
             AggregateAnswer answers = new();
 
            
@@ -34,14 +33,21 @@ namespace ZHL.Library
 
 
             /// Add Final Answer to Model List
-            _regexIntroTestCases.ToList().ForEach(x => answers.Push(x.Process(input, filterList)));
-            AnswerModel result = answers.GetAnswers();
-            itemHistory.Add(new ItemModel(id: 1, textItem: result));
+            
+            if(filterList.Count() != 0)
+            {
+                _regexIntroTestCases.ToList().ForEach(x => answers.Push(x.Process(input, filterList)));
+                AnswerModel result = answers.GetAnswers();
+                itemHistory.Add(new ItemModel(id: 1, textItem: result));
+            }
+            else
+            {
+                itemHistory.Add(new ItemModel(id: 1, textItem: new AnswerModel(inputString: input, matchString: "null", matchName: "Enpty Filter")));
+            }
 
             // store Chat History to file
 
-            log.Info($"Take library input as {input}");
-            log.Info($"Library return result as {result}");
+            log.Info($"Take library input:{input}, match list: {filterList}");
             return itemHistory;
 
         }

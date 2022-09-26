@@ -8,6 +8,24 @@
 @section scripts
 {
     <script src="~/js/scrollButton.js"></script>
+    <style>
+        body {
+          background-color:#E7E9EB;
+        }
+        #myDIV {
+          height:300px;
+          background-color:#FFFFFF;
+        }
+        #filter {
+          background-color: lightblue;
+          width: 300px;
+          height: 300px;
+        }
+        #filter-list {
+
+          overflow: auto;
+        }
+    </style>
 
 }
 
@@ -29,27 +47,25 @@
 
 
 <div class="container mt-4">
-        <div>
+    <div id="filter">
+        <div id="filter-list">
         @foreach (var filterItem in Model.filterList)
         {
-            <div class="pe-2" style="margin: 10px">
-                <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@filterItem</div>
-                <div class="small">@filterItem</div>
-            </div>
+            <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px; margin: 10px">@filterItem</div>
         }
-
+        </div>
         <form method="post">
 
-        <input placeholder="Enter new filter..." />
+            <input placeholder="Enter new filter..." />
             <button type="submit" asp-for="UpdateList">Add</button>
 
         </form>
     </div>
+        
+
 
     <div class="card mx-auto" style="max-width:800px">
 
-
-       
         <!-- Text Area -->
         <div class="card-body p-4" id="main-chat-area" style="height: 70vh; overflow:auto;">
             <div class="d-flex align-items-baseline mb-4">
@@ -57,7 +73,7 @@
                     @foreach (var item in Model.itemList)
                     {
                         <div class="pe-2" style="margin: 10px">
-                            <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@item.TextItem.MatchString</div>
+                            <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@item.TextItem.InputString</div>
                             <div class="small">@item.Created</div>
                         </div>
                     }
