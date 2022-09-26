@@ -29,6 +29,22 @@
 
 
 <div class="container mt-4">
+        <div>
+        @foreach (var filterItem in Model.filterList)
+        {
+            <div class="pe-2" style="margin: 10px">
+                <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@filterItem</div>
+                <div class="small">@filterItem</div>
+            </div>
+        }
+
+        <form method="post">
+
+        <input placeholder="Enter new filter..." />
+            <button type="submit" asp-for="UpdateList">Add</button>
+
+        </form>
+    </div>
 
     <div class="card mx-auto" style="max-width:800px">
 

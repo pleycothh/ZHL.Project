@@ -30,7 +30,7 @@ namespace ZHL.Pages
         /// <summary>
         /// get filterList and itemList from cache all the time
         /// </summary>
-        public void OnGet(string userInput, string CacheId)
+        public void OnGet(string CacheId)
         {
             itemList = _itemProvider.GetItemList(CacheId);
             filterList = _filterProvider.GetFilter();
@@ -45,9 +45,12 @@ namespace ZHL.Pages
             /// Question: why User input is null??
             Console.WriteLine($"On Posted called, User input is {UserInput}, User Id is : {CacheId}");
 
-            _itemProvider.SetItemList(UserInput, CacheId);
+            if(UserInput is not null)
+            {
+                _itemProvider.SetItemList(UserInput, CacheId);
+            }
 
-            return RedirectToPage("./Index", new { UserInput, CacheId });
+            return RedirectToPage("./Index", new { CacheId });
             //return Page();
         }
 
@@ -66,7 +69,7 @@ namespace ZHL.Pages
             _filterProvider.SetFilter(filterList);
            
 
-            return RedirectToPage("./Index", new { UserInput, CacheId });
+            return RedirectToPage("./Index", new {CacheId });
 
         }
     }
