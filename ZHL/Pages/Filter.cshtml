@@ -51,31 +51,33 @@
 
 
 
-<div class="container">
-
-<div class="card mx-auto" style="max-width:800px">
+<div class="container" style="margin-top:100px">
+    
+    <h1 style="color:white">Filter List:</h1>
+    
+    <div class="card mx-auto" style="max-width:800px">
  
-    <!------------------------------------------------------ Filter Area ------------------------------------------------------->
+        <!------------------------------------------------------ Filter Area ------------------------------------------------------->
 
 
-        <div id="filter" class="row card-body">
-            <div id="filter-list" >
-                @foreach (var filterItem in Model.filterList)
-                {
-                    <div class="card card-text p-2 m-3"  style="font-size:20px; margin: 10px; min-width: 400px; text-align: center;">@filterItem</div>
-                }
-            </div>
-        </div>
-
-        <div  class="row">
-            <!------------------------ input bar ------------------------>
-            <form method="post">
-                <div class="input-group card-footer bg-orange-600  m-3 p-2">
-                    <input id="filter-input" type="text" asp-for="FilterInput" class="form-control border-0" placeholder="Enter new filter..."  />
-                    <button asp-page-handler="AddFilter" type="submit" class="btn btn-secondary text-white" asp-route-CacheId="@Model.CacheId" >Add</button>
+            <div id="filter" class="row card-body">
+                <div id="filter-list" >
+                    @foreach (var filterItem in Model.filterList)
+                    {
+                        <div class="card card-text p-2 m-3"  style="font-size:20px; margin: 10px; min-width: 400px; text-align: center;">@filterItem</div>
+                    }
                 </div>
-            </form>
-        </div>
+            </div>
+
+                <!------------------------ input bar ------------------------>
+                <form method="post">
+                    <div class="card-footer bg-white position-absolute w-100 bottom-0 m-0 p-1">
+                        <div class="input-group">
+                            <input id="filter-input" type="text" asp-for="FilterInput" class="form-control border-0" placeholder="Enter new filter..."  />
+                            <button asp-page-handler="AddFilter" type="submit" class="btn btn-secondary text-white" asp-route-CacheId="@Model.CacheId" >Add</button>
+                        </div>
+                    </div>
+                </form>
            
-    </div>
+        </div>
 </div>
