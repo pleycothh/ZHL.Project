@@ -12,7 +12,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
     {
         public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
         {
-            yield return new AnswerModel(answer: "I don't unsdertand...", vecValue: 1, matchName: "Loose Match One");
+            yield return new AnswerModel(answer: "I don't unsdertand...", vecValue: 8, matchName: "Loose Match One");
         }
     }
 }

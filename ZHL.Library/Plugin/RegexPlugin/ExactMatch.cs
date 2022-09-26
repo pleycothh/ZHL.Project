@@ -8,9 +8,20 @@ namespace ZHL.Library.Plugin.RegexPlugin
     {
         public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
         {
-            return filterList
-                .Where(x => Regex.IsMatch( input, x))
-                .Select(x => new AnswerModel(answer: input, vecValue: 12, matchName: "Exact Match"));
+            var inputList = input.Split(Path.DirectorySeparatorChar);
+
+            foreach (var inp in inputList)
+            {
+                foreach(var filter in filterList)
+                {
+                    var regex = new Regex($"{filter}");
+
+                    if (regex.IsMatch(inp))
+                    {
+                        yield return new AnswerModel(inputString: input, matchString: inp, vecValue: 9, matchName: "Exact Match");
+                    }
+                }
+            }
         }
     }
 }

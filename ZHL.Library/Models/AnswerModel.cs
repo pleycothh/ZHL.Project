@@ -9,13 +9,15 @@ namespace ZHL.Library.Models
     public class AnswerModel
     {
         public int VecValue { get; set; }
-        public string Answer { get; set; }
+        public string InputString { get; set; }
+        public string MatchString { get; set; }
         public string MatchName { get; set; }
 
-        public AnswerModel(string answer, int vecValue = -1, string matchName)
+        public AnswerModel( string inputString, string matchString, string matchName, int vecValue = -1)
         {
             VecValue = vecValue;
-            Answer = answer;
+            InputString = inputString;
+            MatchString = matchString;
             MatchName = matchName;
         }
     }
