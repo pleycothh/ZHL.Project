@@ -9,15 +9,15 @@ using ZHL.Library.Models;
 
 namespace ZHL.Library.Plugin.RegexPlugin
 {
-    public class Name : IRegexIntro
+    public class LooseMatchTwo : IRegexIntro
     {
-        public IEnumerable<AnswerModel> Process(string input)
+        public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
         {
             var regex = new Regex(@"name");
 
             if (regex.IsMatch(input))
             {
-                yield return new AnswerModel(answer: "My Name is AI", vecValue: 12);
+                yield return new AnswerModel(answer: "My Name is AI", vecValue: 12, matchName: "Loose Match Two");
             }
         }
     }

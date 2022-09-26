@@ -8,11 +8,11 @@ using ZHL.Library.Models;
 
 namespace ZHL.Library.Plugin.RegexPlugin
 {
-    public class IDK : IRegexIntro
+    public class LoosMatchOne : IRegexIntro
     {
-        public IEnumerable<AnswerModel> Process(string input)
+        public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
         {
-            yield return new AnswerModel(answer: "I don't unsdertand...", vecValue: 1);
+            yield return new AnswerModel(answer: "I don't unsdertand...", vecValue: 1, matchName: "Loose Match One");
         }
     }
 }

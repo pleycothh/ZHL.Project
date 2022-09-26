@@ -31,7 +31,7 @@ namespace ZHL.GUI.Provider
             return result;
         }
 
-        public void SetItemList(string userInput, string cacheId)
+        public void SetItemList(string userInput, List<string> filterList, string cacheId)
         {
             List<ItemModel> items = new();
             cacheId = cacheId is null ? "-1" : cacheId;
@@ -48,7 +48,7 @@ namespace ZHL.GUI.Provider
             }
             else
             {
-                items.AddRange(_mainRunner.Run(userInput));
+                items.AddRange(_mainRunner.Run(userInput, filterList));
             }
             _memoryCache.Set(cacheId, items);
 

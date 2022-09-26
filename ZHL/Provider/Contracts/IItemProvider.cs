@@ -5,6 +5,6 @@ namespace ZHL.GUI.Provider.Contracts
     public interface IItemProvider
     {
         List<ItemModel> GetItemList(string cacheId);
-        void SetItemList(string userInput, string cacheId);
+        void SetItemList(string userInput, List<string> filterList, string cacheId);
     }
 }

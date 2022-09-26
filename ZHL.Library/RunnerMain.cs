@@ -14,7 +14,7 @@ namespace ZHL.Library
 
         private static readonly ILog log = LogManager.GetLogger("file");
 
-        public List<ItemModel> Run(string input)
+        public List<ItemModel> Run(string input, List<string> filterList)
         {
             /// Load from voic and process
             /// Dump the voic result to speach module
@@ -34,7 +34,7 @@ namespace ZHL.Library
 
 
             /// Add Final Answer to Model List
-            _regexIntroTestCases.ToList().ForEach(x => answers.Push(x.Process(input)));
+            _regexIntroTestCases.ToList().ForEach(x => answers.Push(x.Process(input, filterList)));
             AnswerModel result = answers.GetAnswers();
             itemHistory.Add(new ItemModel(id: 1, textItem: result));
 

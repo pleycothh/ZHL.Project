@@ -47,7 +47,7 @@ namespace ZHL.Pages
 
             if(UserInput is not null)
             {
-                _itemProvider.SetItemList(UserInput, CacheId);
+                _itemProvider.SetItemList(UserInput, filterList, CacheId);
             }
 
             return RedirectToPage("./Index", new { CacheId });
