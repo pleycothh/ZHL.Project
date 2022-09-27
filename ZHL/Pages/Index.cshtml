@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -8,89 +8,85 @@
 @section scripts
 {
     <script src="~/js/scrollButton.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <style>
         body {
-          background-color:#E7E9EB;
+          background-color:#17191f;
+          color: #17191f;
+          font-size: 24px;
         }
         #filter {
-          background-color: lightblue;
-          width: 300px;
-          height: 300px;
+          background-color: auto;
+          width: auto;
+          height: 40vh;
+          overflow: auto;
         }
         #filter-list {
-
-          overflow: auto;
+          
+        }
+        #filter-input {
+            width: auto;
         }
     </style>
 
 }
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-pills bg-white border-bottom box-shadow mb-3">
-    <div class="container-fluid">
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link active" asp-area="" asp-page="./Index"><strong>Home</strong></a>
-            </li>
+<nav class="navbar mb-3 bg-secondary " >
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" asp-area="" asp-page="./Index" asp-route-CacheId="@Model.CacheId"><strong>Check</strong></a>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-page="./About">About</a>
-            </li>
+        <li class="nav-item" >
+            <a class="nav-link text-dark" asp-area="" asp-page="./Filter" asp-route-CacheId="@Model.CacheId" >Filter</a>
+        </li>
 
-        </ul>
-    </div>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="./About" asp-route-CacheId="@Model.CacheId">About</a>
+        </li>
+    </ul>
 </nav>  
  
 
 
-<div class="container mt-4">
-    <div id="filter">
-        <div id="filter-list">
-        @foreach (var filterItem in Model.filterList)
-        {
-            <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px; margin: 10px">@filterItem</div>
-        }
-        </div>
-        <form method="post">
+<div class="container" style="margin-top:100px">
 
-            <input type="text" asp-for="FilterInput" placeholder="Enter new filter..."  />
-            <button asp-page-handler="AddFilter" type="submit" class="btn btn-primary" asp-route-CacheName="@Model.CacheId" >Add</button>
-        </form>
-    </div>
-        
+    <h1 style="color:white">Filtered Item List:</h1>
+    <!------------------------------------------------------ Text Area ------------------------------------------------------->
+    <div class="mx-auto" style="max-width:1200px; background:white;">
 
 
-    <div class="card mx-auto" style="max-width:800px">
-
-        <!-- Text Area -->
-        <div class="card-body p-4" id="main-chat-area" style="height: 70vh; overflow:auto;">
-            <div class="d-flex align-items-baseline mb-4">
-                <div id="chat-list" style="list-style: none;">
+            <div  id="main-chat-area" style="height: 40vh; overflow:auto;">
+                <div id="chat-list">
                     @foreach (var item in Model.itemList)
                     {
-                        <div class="pe-2" style="margin: 10px">
-                            <div class="card card-text d-inline-block p-2 px-3 m-1" style="font-size:20px">@item.TextItem.InputString</div>
-                            <div class="small">@item.Created</div>
+                        <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;">
+                            <div  style="font-size:20px; text-align: center;">@item.TextItem.InputString</div>
+                            <div class="small" style="text-align:right">@item.Created</div>
                         </div>
                     }
                 </div>
 
-            </div>
         </div>
 
-        <form method="post" style="margin-top: 100px">
-            <!-- input bar -->
-            <div class="card-footer bg-white position-absolute w-100 bottom-0 m-0 p-1">
-                <div class="input-group">
+        <!------------------------ input bar ------------------------>
+        <form method="post" class="mx-auto" >
+                
+      
+                <div class="input-group bg-transparent border-0">
+                    <input type="text" asp-for="UserInput" class="form-control border-2" placeholder="Input..." />
 
-                    <input type="text" asp-for="UserInput" class="form-control border-0" placeholder="Input..." />
+                    <button class="btn btn-secondary text-white" type="submit" style="font-size:24px" asp-page-handler="SetItem" asp-route-CacheId="@Model.CacheId">Check</button>
 
-                    <div class="input-group-text bg-transparent border-0">
-                        <button class="btn btn-secondary text-white" type="submit" style="font-size:24px" asp-page-handler="SetItem" asp-route-CacheName="@Model.CacheId">Send</button>
-                    </div>
-                </div>
             </div>
         </form>
-
     </div>
+
+    <!------------------------ slide bar ------------------------>
+    <div style="margin-top: 5%">
+        <label for="customRange1" class="form-label" style="color:white">Filter Level: </label>
+        <input type="range" class="form-range" id="customRange1">
+    </div>
+
 </div>

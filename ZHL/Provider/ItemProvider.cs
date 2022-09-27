@@ -39,17 +39,16 @@ namespace ZHL.GUI.Provider
             userInput = userInput is null ? "NULL" : userInput;
             Console.WriteLine($"Add item with user input: {userInput}");
 
-            //    var items = _memoryCache.Get<List<ItemModel>>(cacheId);
-            //
-            //   if (items is null)
-            //   {
-            //      //allResults = mainRunner.RunBatchAnalysis($@"{Path.Path}", true).GetResults();
-            var items = _mainRunner.Run(userInput, filterList);
-            //    }
-            //    else
-            //    {
-            //        items.AddRange(_mainRunner.Run(userInput, filterList));
-            //    }
+            var items = _memoryCache.Get<List<ItemModel>>(cacheId);
+            
+               if (items is null)
+               {
+                    items = _mainRunner.Run(userInput, filterList);
+               }
+                else
+                {
+                    items.AddRange(_mainRunner.Run(userInput, filterList));
+                }
             Console.WriteLine($"Save Item List to cache with chache Id: {cacheId}");
 
             _memoryCache.Set(cacheId, items);

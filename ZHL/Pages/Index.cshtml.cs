@@ -21,8 +21,6 @@ namespace ZHL.Pages
 
         [BindProperty]
         public string UserInput { get; set; }
-        [BindProperty]
-        public string FilterInput { get; set; }
 
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
@@ -59,25 +57,6 @@ namespace ZHL.Pages
 
             return RedirectToPage("./Index", new { CacheId });
             //return Page();
-        }
-
-        /// <summary>
-        /// submit filter list updates:
-        /// 1: reload page
-        /// 2: keep the input box as cache
-        /// 3: load new filter list to the UI
-        /// </summary>
-        public IActionResult OnPostAddFilter()
-        {
-
-            /// Question: why User input is null??
-            Console.WriteLine($"On Posted AddFilter called, User input is {FilterInput}, Cache Id is : {CacheId}");
-
-            _filterProvider.AddFilter(FilterInput);
-           
-
-            return RedirectToPage("./Index", new {CacheId });
-
         }
     }
 }
