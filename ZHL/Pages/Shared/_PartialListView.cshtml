@@ -22,14 +22,24 @@ else
 
     <div id="main-chat-area" style="height: 40vh; overflow:auto;">
         <div id="chat-list">
-            @foreach (var item in Model.itemList)
+
+            @if (onFilter)
             {
-                <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;">
-                    <div style="font-size:20px; text-align: center;">@item.TextItem.InputString</div>
-                    <div class="small" style="text-align:right">@item.Created</div>
-                </div>
+                @foreach (var filterItem in Model.filterList)
+                {
+                    <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;font-size:20px; text-align: center;">@filterItem</div>
+                }
+            }
+            else
+            {
+                @foreach (var item in Model.itemList)
+                {
+                    <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;">
+                        <div style="font-size:20px; text-align: center;">@item.TextItem.InputString</div>
+                        <div class="small" style="text-align:right">@item.Created</div>
+                    </div>
+                }
             }
         </div>
-
     </div>
 </div>
