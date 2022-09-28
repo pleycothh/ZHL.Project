@@ -45,6 +45,9 @@ namespace ZHL.GUI.Provider
 
             filter.RemoveAll(x => x.HashId == hashId);
 
+        //    _memoryCache.Set("filter", filter);
+
+
         }
 
         //  no need for library invove, just set to cache 

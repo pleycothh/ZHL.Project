@@ -61,7 +61,7 @@ namespace ZHL.GUI.Provider
             var items = GetItemList("tempId");
 
             items.RemoveAll(x => x.HashId == hashId);
-
+          //  _memoryCache.Set("tempId", items);
         }
     }
 }
