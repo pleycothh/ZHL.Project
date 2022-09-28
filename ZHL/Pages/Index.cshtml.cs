@@ -9,13 +9,13 @@ namespace ZHL.Pages
 {
     public class IndexModel : PageModel
     {
-        public readonly IItemProvider _itemProvider;
+        public readonly IItemProvider ItemProvider;
         private readonly IFilterListProvider _filterProvider;
         private static readonly ILog log = LogManager.GetLogger("file");
 
         public IndexModel(IItemProvider itemProvider, IFilterListProvider filterProvider)
         {
-            _itemProvider = itemProvider;
+            ItemProvider = itemProvider;
             _filterProvider = filterProvider;
         }
 
@@ -35,7 +35,7 @@ namespace ZHL.Pages
         {
             CacheId = cacheId;
 
-            itemList = _itemProvider.GetItemList(CacheId);
+            itemList = ItemProvider.GetItemList(CacheId);
             filterList = _filterProvider.GetFilter();
             Console.WriteLine($"On Get called, Cache Id is : {CacheId}");
 
@@ -52,7 +52,7 @@ namespace ZHL.Pages
 
             if(UserInput is not null)
             {
-                _itemProvider.SetItemList(UserInput, filterList, CacheId);
+                ItemProvider.SetItemList(UserInput, filterList, CacheId);
             }
 
             return RedirectToPage("./Index", new { CacheId });

@@ -1,9 +1,9 @@
 ﻿@page "/api/deleteItem/{cacheId}/{hashId}/"
 
-@using ZHL.Pages
-@model IndexModel
+@model ZHL.Pages.IndexModel;
+
 @{
-    Model._itemProvider.DeleteItem(
+    Model.ItemProvider.DeleteItem(
     RouteData.Values["hashId"] as string
         );
 }
