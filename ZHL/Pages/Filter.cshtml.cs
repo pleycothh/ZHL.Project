@@ -10,7 +10,7 @@ namespace ZHL.GUI.Pages
     public class FilterModel : PageModel
     {
 
-        private readonly IFilterListProvider _filterProvider;
+        public readonly IFilterListProvider _filterProvider;
 
         public FilterModel(IFilterListProvider filterProvider)
         {
@@ -22,12 +22,14 @@ namespace ZHL.GUI.Pages
 
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
-        public List<string> filterList = new();
+        public List<FilterItemModel> filterList = new();
 
 
         public void OnGet(string cacheId)
         {
             CacheId = cacheId;
+            if(filterList.Count > 2)
+                Console.WriteLine(filterList.First().FilterName + "-" + filterList.First().HashId);
 
             filterList = _filterProvider.GetFilter();
         }

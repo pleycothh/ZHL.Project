@@ -4,6 +4,6 @@ namespace ZHL.Library.Contracts
 {
     public interface IRunnerMain
     {
-        List<ItemModel> Run(string input, List<string> filterList);
+        List<ItemModel> Run(string input, List<FilterItemModel> filterList);
     }
 }

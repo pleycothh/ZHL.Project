@@ -11,7 +11,7 @@ namespace ZHL.Library.Models
         private AnswerModel _finalAnswer { get; set; }
         private List<AnswerModel> _answerList = new();
 
-        public AnswerModel GetAnswers()
+        public AnswerModel GetAnswers(string input)
         {
             _answerList.ForEach(x =>
             {
@@ -20,6 +20,8 @@ namespace ZHL.Library.Models
                     _finalAnswer = x;
                 }
             });
+
+            _finalAnswer = _finalAnswer is null ? new AnswerModel(input) : _finalAnswer;
             return _finalAnswer;
         }
         public void Push(IEnumerable<AnswerModel> ans)

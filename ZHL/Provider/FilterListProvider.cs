@@ -16,27 +16,38 @@ namespace ZHL.GUI.Provider
             _memoryCache = memoryCache;
         }
 
-        public List<string> GetFilter()
+        public List<FilterItemModel> GetFilter()
         {
-            var filter = _memoryCache.Get<List<string>>("filter");
+            var filter = _memoryCache.Get<List<FilterItemModel>>("filter");
             Console.WriteLine($"Get filter from cache.");
-            return filter is null ? new List<string>() : filter;
+            return filter is null ? new List<FilterItemModel>() : filter;
         }
 
         public void AddFilter(string filterInput)
         {
             Console.WriteLine($"Add Filter with input: {filterInput}");
-            var filter = _memoryCache.Get<List<string>>("filter");
+            var filter = _memoryCache.Get<List<FilterItemModel>>("filter");
 
             if(filter is null)
             {
                 Console.WriteLine("Filter Cache is null, empty filter list created");
 
-                filter = new List<string>();
+                filter = new List<FilterItemModel>();
             }
 
-            filter.Add(filterInput);
+            filter.Add(new FilterItemModel(filterInput));
             _memoryCache.Set("filter", filter);
+        }
+
+        public void DeleteFilter(string hashId)
+        {
+            var filter = GetFilter();
+
+            filter.RemoveAll(x => x.HashId == hashId);
+
+        //    _memoryCache.Set("filter", filter);
+
+
         }
 
         //  no need for library invove, just set to cache 

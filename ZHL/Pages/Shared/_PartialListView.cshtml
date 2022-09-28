@@ -1,0 +1,58 @@
+﻿
+
+@{
+    var onFilter = (bool)ViewData["Filter"];
+    string hash;
+}
+
+
+
+<!------------------------------------------------------ Text Area ------------------------------------------------------->
+@if(onFilter)
+{
+    <h1 style="color:white">Filter List:</h1>
+}
+else
+{
+    <h1 style="color:white">Filtered Item List:</h1>
+}
+
+<!------------------------------------------------------ List Area ------------------------------------------------------->
+
+<div class="mx-auto" style="max-width:1200px; background:white;">
+
+
+    <div id="main-chat-area" style="height: 40vh; overflow:auto;">
+        <div id="chat-list">
+
+            @if (onFilter)
+            {
+                foreach (var filterItem in Model.filterList)
+                {
+                    <div>
+                        <div 
+                            class="shadow p-3 mb-3 bg-white rounded" 
+                            style="margin: 10px;font-size:20px; text-align: center;"
+                            onclick="deleteItem(this.parentElement, true);">
+                            @filterItem.FilterName
+                        </div>
+                        <p class="hash" style="display:none;">@filterItem.HashId</p>
+                    </div>
+                }
+            }else
+               {
+                foreach (var item in Model.itemList)
+                {
+                    <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;" onclick="deleteItem(this, false);">
+                        <div id="item-card" style="font-size:20px; text-align: center;">@item.TextItem.InputString</div>
+
+                        <p id="item-match" style="text-align:right"> Matched filter: @item.TextItem.MatchString.FilterName</p>
+                        <p class="hash" style="display:none; font-size:12px">@item.HashId</p>
+                        <div class="small" style="text-align:right">@item.Created</div>
+                    </div>
+                }
+            }
+            
+        </div>
+    </div>
+</div>
