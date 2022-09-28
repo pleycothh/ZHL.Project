@@ -37,12 +37,16 @@ namespace ZHL.Library
             if(filterList.Count() != 0)
             {
                 _regexIntroTestCases.ToList().ForEach(x => answers.Push(x.Process(input, filterList)));
-                AnswerModel result = answers.GetAnswers();
+                AnswerModel result = answers.GetAnswers(input);
                 itemHistory.Add(new ItemModel(userId: "tempUserId", textItem: result));
             }
             else
             {
-                itemHistory.Add(new ItemModel(userId: "tempUserId", textItem: new AnswerModel(inputString: input, matchString: "null", matchName: "Enpty Filter")));
+                /// if current filter is empty, 
+                /// skip the test case
+                /// direact add input to item result
+                /// null filter model for match string, because therer is no match
+                itemHistory.Add(new ItemModel(userId: "tempUserId", textItem: new AnswerModel(inputString: input)));
             }
 
             // store Chat History to file

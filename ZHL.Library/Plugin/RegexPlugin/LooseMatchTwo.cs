@@ -17,7 +17,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
 
             if (regex.IsMatch(input))
             {
-                yield return new AnswerModel(inputString: input, matchString: input, vecValue: 7, matchName: "Loose Match Two");
+                yield return new AnswerModel(inputString: input, matchString: new FilterItemModel("demo"), vecValue: 7, matchName: "Loose Match Two");
             }
         }
     }

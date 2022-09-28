@@ -18,7 +18,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
 
                     if (regex.IsMatch(inp))
                     {
-                        yield return new AnswerModel(inputString: input, matchString: inp, vecValue: 9, matchName: "Exact Match");
+                        yield return new AnswerModel(inputString: input, matchString: filter, vecValue: 9, matchName: "Exact Match");
                     }
                 }
             }

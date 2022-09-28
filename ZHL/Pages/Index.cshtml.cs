@@ -24,7 +24,7 @@ namespace ZHL.Pages
 
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
-        public List<FilterItemModel> filterList = new();
+        public List<FilterItemModel> FilterList = new();
         public List<ItemModel> itemList = new();
 
 
@@ -36,7 +36,7 @@ namespace ZHL.Pages
             CacheId = cacheId;
 
             itemList = ItemProvider.GetItemList(CacheId);
-            filterList = _filterProvider.GetFilter();
+            FilterList = _filterProvider.GetFilter();
             Console.WriteLine($"On Get called, Cache Id is : {CacheId}");
 
         }
@@ -46,13 +46,14 @@ namespace ZHL.Pages
         /// </summary>
         public IActionResult OnPostSetItem()
         {
+            FilterList = _filterProvider.GetFilter();
 
             /// Question: why User input is null??
             Console.WriteLine($"On Posted called, User input is {UserInput}, Cache Id is : {CacheId}");
 
             if(UserInput is not null)
             {
-                ItemProvider.SetItemList(UserInput, filterList, CacheId);
+                ItemProvider.SetItemList(UserInput, FilterList, CacheId);
             }
 
             return RedirectToPage("./Index", new { CacheId });
