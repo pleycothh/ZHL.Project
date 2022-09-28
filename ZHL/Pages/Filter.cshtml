@@ -53,27 +53,21 @@
 
 <div class="container" style="margin-top:100px">
     
-
-        <div class="mx-auto" style="max-width:1200px; background:white;">
+    <div class="mx-auto" style="max-width:1200px; background:white;">
  
+        <!------------------------ input bar ------------------------>
+        <form method="post" class="mx-auto">
+            <div class="input-group bg-transparent border-0">
+                <input id="filter-input" type="text" asp-for="FilterInput" class="form-control border-2" placeholder="Enter new filter..." />
+                <button asp-page-handler="AddFilter" type="submit" class="btn btn-secondary text-white" asp-route-CacheId="@Model.CacheId" >Add</button>
+            </div>
+        </form>
+        
+        
         <!------------------------------------------------------ Filter Area ------------------------------------------------------->
         <div>
             <partial name="/Pages/Shared/_PartialListView.cshtml" model="@Model" view-data="ViewData" />
         </div>
 
-            <!--div id="filter" style="height: 40vh; overflow:auto;">
-                <div id="filter-list" >
-               
-                </div>
-            </div-->
-
-                <!------------------------ input bar ------------------------>
-                <form method="post" class="mx-auto">
-            <div class="input-group bg-transparent border-0">
-                <input id="filter-input" type="text" asp-for="FilterInput" class="form-control border-2" placeholder="Enter new filter..." />
-                        <button asp-page-handler="AddFilter" type="submit" class="btn btn-secondary text-white" asp-route-CacheId="@Model.CacheId" >Add</button>
-                    </div>
-                </form>
-           
-        </div>
+    </div>
 </div>
