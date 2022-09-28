@@ -10,7 +10,7 @@ namespace ZHL.GUI.Pages
     public class FilterModel : PageModel
     {
 
-        private readonly IFilterListProvider _filterProvider;
+        public readonly IFilterListProvider _filterProvider;
 
         public FilterModel(IFilterListProvider filterProvider)
         {

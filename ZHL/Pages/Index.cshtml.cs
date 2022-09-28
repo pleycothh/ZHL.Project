@@ -9,7 +9,7 @@ namespace ZHL.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly IItemProvider _itemProvider;
+        public readonly IItemProvider _itemProvider;
         private readonly IFilterListProvider _filterProvider;
         private static readonly ILog log = LogManager.GetLogger("file");
 
