@@ -10,7 +10,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
 {
     public class LoosMatchOne : IRegexIntro
     {
-        public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
+        public IEnumerable<AnswerModel> Process(string input, List<FilterItemModel> filterList)
         {
             yield return new AnswerModel(inputString: input, matchString: input, vecValue: 8, matchName: "Loose Match One");
         }

@@ -8,14 +8,16 @@ namespace ZHL.Library.Models
 {
     public class ItemModel
     {
-        public int Id { get; set; }
+        public string UserId { get; set; } // temp not used, set as fixed value
+        public string HashId { get; set; }
         public AnswerModel TextItem { get; set; }
         public DateTime Created { get; set; }
 
-        public ItemModel(int id, AnswerModel textItem)
+        public ItemModel(string userId, AnswerModel textItem)
         {
-            Id = id;
+            UserId = userId;
             TextItem = textItem;
+            HashId = $"{textItem.InputString}-{DateTime.Now.Millisecond}";
             Created = DateTime.Now;
         }
     }

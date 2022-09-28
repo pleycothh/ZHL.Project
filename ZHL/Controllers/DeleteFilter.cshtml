@@ -3,7 +3,6 @@
 @model ZHL.GUI.Pages.FilterModel
 @{
     Model._filterProvider.DeleteFilter(
-        RouteData.Values["cacheId"] as string,
         RouteData.Values["hashId"] as string
     );
 }

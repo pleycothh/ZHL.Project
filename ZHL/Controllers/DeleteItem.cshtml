@@ -4,7 +4,6 @@
 @model IndexModel
 @{
     Model._itemProvider.DeleteItem(
-    RouteData.Values["cacheId"] as string,
     RouteData.Values["hashId"] as string
         );
 }

@@ -14,7 +14,7 @@ namespace ZHL.Library
 
         private static readonly ILog log = LogManager.GetLogger("file");
 
-        public List<ItemModel> Run(string input, List<string> filterList)
+        public List<ItemModel> Run(string input, List<FilterItemModel> filterList)
         {
             /// Load from voic and process
             /// Dump the voic result to speach module
@@ -38,11 +38,11 @@ namespace ZHL.Library
             {
                 _regexIntroTestCases.ToList().ForEach(x => answers.Push(x.Process(input, filterList)));
                 AnswerModel result = answers.GetAnswers();
-                itemHistory.Add(new ItemModel(id: 1, textItem: result));
+                itemHistory.Add(new ItemModel(userId: "tempUserId", textItem: result));
             }
             else
             {
-                itemHistory.Add(new ItemModel(id: 1, textItem: new AnswerModel(inputString: input, matchString: "null", matchName: "Enpty Filter")));
+                itemHistory.Add(new ItemModel(userId: "tempUserId", textItem: new AnswerModel(inputString: input, matchString: "null", matchName: "Enpty Filter")));
             }
 
             // store Chat History to file

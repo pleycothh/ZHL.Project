@@ -24,7 +24,7 @@ namespace ZHL.Pages
 
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
-        public List<string> filterList = new();
+        public List<FilterItemModel> filterList = new();
         public List<ItemModel> itemList = new();
 
 

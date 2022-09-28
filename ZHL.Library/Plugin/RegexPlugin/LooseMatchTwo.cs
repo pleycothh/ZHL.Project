@@ -11,7 +11,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
 {
     public class LooseMatchTwo : IRegexIntro
     {
-        public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
+        public IEnumerable<AnswerModel> Process(string input, List<FilterItemModel> filterList)
         {
             var regex = new Regex(@"name");
 

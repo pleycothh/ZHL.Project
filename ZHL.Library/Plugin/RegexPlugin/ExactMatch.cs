@@ -6,7 +6,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
 {
     public class ExactMatch : IRegexIntro
     {
-        public IEnumerable<AnswerModel> Process(string input, List<string> filterList)
+        public IEnumerable<AnswerModel> Process(string input, List<FilterItemModel> filterList)
         {
             var inputList = input.Split(Path.DirectorySeparatorChar);
 
@@ -14,7 +14,7 @@ namespace ZHL.Library.Plugin.RegexPlugin
             {
                 foreach(var filter in filterList)
                 {
-                    var regex = new Regex($"{filter}");
+                    var regex = new Regex($"{filter.FilterName}");
 
                     if (regex.IsMatch(inp))
                     {
