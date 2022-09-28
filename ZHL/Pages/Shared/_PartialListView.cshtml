@@ -25,17 +25,17 @@ else
 
             @if (onFilter)
             {
-                @foreach (var filterItem in Model.filterList)
+                foreach (var filterItem in Model.filterList)
                 {
-                    <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;font-size:20px; text-align: center;" onclick()>@filterItem.FilterName</div>
+                    <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;font-size:20px; text-align: center;" onclick="deleteItem(this, onFilter);>@filterItem.FilterName</div>
                 }
             }
             else
             {
-                @foreach (var item in Model.itemList)
+                foreach (var item in Model.itemList)
                 {
                     <div class="shadow p-3 mb-3 bg-white rounded" style="margin: 10px;">
-                        <div style="font-size:20px; text-align: center;" onclick()>@item.TextItem.InputString</div>
+                        <div style="font-size:20px; text-align: center;" onclick="deleteItem(this, onFilter);">>@item.TextItem.InputString</div>
                         <div class="small" style="text-align:right">@item.Created</div>
                     </div>
                 }

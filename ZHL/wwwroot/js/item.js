@@ -2,10 +2,11 @@
 let lastSender = undefined;
 
 
-function deleteItem(sender) {
+function deleteItem(sender, onFilter) {
     // Called like: openDialog(this), so we get a reference to the table row that called this function
     lastSender = sender;
 
+    console.log("Delete Item: " + sender + type);
 
     let tr = lastSender;
 
@@ -21,7 +22,14 @@ function deleteItem(sender) {
 
     //tr.querySelector('.notes').textContent = newNote;
 
-    fetch(`/api/deleteItem/${cacheId}/${hashId}/`);
+    if (!onFilter) {
+
+        fetch(`/api/deleteItem/${cacheId}/${hashId}/`);
+    }
+    if (onFilter) {
+
+        fetch(`/api/deleteFilter/${cacheId}/${hashId}/`);
+    }
     
 
     lastSender = undefined;
