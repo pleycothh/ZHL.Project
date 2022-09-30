@@ -100,9 +100,17 @@
 
 
         <div class="emailer">
-            <form>
+            <form method ="post">
                 <label for="fname">Name</label>
-                <input type="text" id="fname" name="Full Name" placeholder="Your name..">
+                <input type="text" id="fname" name="Full Name" asp-for="@Model.Name" placeholder="Your name..">
+
+                <label for="fname">Email</label>
+                <input type="text" id="email" name="Email" placeholder="Optional...">
+
+                <label for="fname">Phone:</label>
+                <input type="text" id="phone" name="Phone" placeholder="Optional...">
+
+
 
                 <label for="intension">Why</label>
                 <select id="intension" name="intention">
@@ -112,11 +120,12 @@
                 </select>
 
                 <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                <textarea id="subject" name="subject" asp-for="@Model.TextBox" placeholder="Write something.." style="height:200px"></textarea>
 
-                <input type="submit" value="Send">
-                <p>(This feature is coming soon!)</p>
+                <button asp-page-handler="SendEmail" type="submit" class="btn btn-success" asp-route-CacheId="@Model.CacheId">Send</button>
+
             </form>
+
         </div>
 
 
