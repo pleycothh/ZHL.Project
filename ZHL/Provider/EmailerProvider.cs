@@ -1,52 +1,39 @@
-﻿using FluentEmail.Core;
-using FluentEmail.Razor;
-using FluentEmail.Smtp;
-using Microsoft.AspNetCore.Routing.Template;
-using System.Net.Mail;
-using System.Text;
+﻿using MimeKit;
+using MimeKit.Text;
+using MailKit.Security;
+using MailKit.Net.Smtp;
 using ZHL.Library.Models;
+using ZHL.GUI.Provider.Contracts;
 
 namespace ZHL.GUI.Provider
 {
-    public class EmailerProvider
+    public class EmailerProvider : IEmailerProvider
     {
-        
 
-        public static async Task Sender(EmailClientModel emailClient)
+        private readonly IConfiguration _config;
+
+        public EmailerProvider(IConfiguration config)
         {
-            var sender = new SmtpSender(() => new SmtpClient("localhost")
-            {
-                /// should be true for production -> should in app.seeting .json
-                EnableSsl = false,
-                /// put file in directory
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Port = 25
-            });
-
-            StringBuilder template = new();
-            template.AppendLine("Dear @Model.FirsName,");
-            template.AppendLine("<p> Thanks for purchasing @Model.productName. we home you like it </P>");
-            template.AppendLine("- The TimCo Team");
-
-
-            /// Apply the sender settings when call Email
-            Email.DefaultSender = sender;
-            Email.DefaultRenderer = new RazorRenderer();
-
-            /// here is client now
-            var email = await Email
-                .From("ben.li19930119@gmail.com")
-                .To("test@test.com", "Nicer Name")
-                .Subject("Thanks!")
-                .UsingTemplate(template.ToString(), new {FirstName = "Ben", productName = "Ball"})
-                //.Body("Body")
-                .SendAsync();
-
-            if (email.ErrorMessages is not null)
-                Console.WriteLine(email.ErrorMessages);
+            _config = config;
         }
 
+        public async Task Sender(EmailClientModel emailClient)
+        {
 
 
+
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+            email.To.Add(MailboxAddress.Parse(emailClient.To));
+            email.Subject = emailClient.Subject;
+            email.Body = new TextPart(TextFormat.Html) { Text = emailClient.Body };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect(_config.GetSection("EmailHost").Value, 587, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+            smtp.Send(email);
+            smtp.Disconnect(true);
+
+        }
     }
 }
