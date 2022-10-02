@@ -5,53 +5,7 @@
 }
 @section scripts
 {
-    <style>
-        body {
-          background-color:#17191f;
-          font-family: Arial, Helvetica, sans-serif;
-          color: #dbdbdb;
-          font-size: 24px;
-        }
-        .nav-item{
-            color: #dbdbdb;
-        }
-   
-
-        * {
-            box-sizing: border-box;
-        }
-
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
-
-        input[type=submit] {
-            background-color: #04AA6D;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-        .emailer {
-            border-radius: 5px;
-            background-color: #6c757e;
-            padding: 20px;
-        }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="~/css/About.css" />
 }
 <nav class="navbar mb-3 bg-secondary ">
     <ul class="nav nav-tabs">
@@ -71,14 +25,11 @@
 
 <div class="container" style="margin-top: 50px">
 
-
-
         <h2>Objective of This Project:</h2>
 
         <p>This is a language filter project, using ASP.NET Core Razor Pages.</p>
         <p>The highlight of this project is it allows <strong>complex</strong> and <strong>extendable</strong> match rules, even with machine learning plugins to provide a loose match.</p>
         <p>The idea of this project is to use Autofac to easily manage test cases plugins.</p>
-
 
         <br />
         <hr />
@@ -92,8 +43,6 @@
         <p>Enter the check item.</p>
         <p>The resulting item will be marked if the input string found matches the filter list.</p>
 
-
-
         <br />
         <hr />
 
@@ -105,38 +54,6 @@
     <p>Linkedin:  <a href="https://www.linkedin.com/in/ben-zhuoheng-li/" target="_blank">linkedin.com/in/ben-zhuoheng-li</a></p>
     <p>GitHub: <a href="https://github.com/pleycothh/ZHL.Project" target="_blank">Github</a></p>
 
-    
-
-        <!--div class="emailer">
-            <form method ="post">
-                <label for="fname">Name</label>
-                <input type="text" id="fname" asp-for="Name" placeholder="Your name..">
-
-                <label for="fname">Email</label>
-                <input type="text" id="email" asp-for="UserEmail" placeholder="Optional...">
-
-                <label for="fname">Phone:</label>
-                <input type="text" id="phone" name="Phone"  placeholder="Optional...">
-
-
-
-                <label for="intension">Why</label>
-                <select id="intension" asp-for="Subject">
-                    <option value="suggess">Suggession</option>
-                    <option value="recruiting">Recruiting</option>
-                    <option value="other">Others</option>
-                </select>
-
-                <label for="subject">Subject</label>
-                <textarea id="subject"  asp-for="TextBox" placeholder="Write something.." style="height:200px"></textarea>
-
-                <button asp-page-handler="SendEmail" type="submit" class="btn btn-success" asp-route-CacheId="@Model.CacheId">Send</button>
-
-            </form>
-
-        </div-->
-
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - ZHL
@@ -144,4 +61,36 @@
     </footer>
 
 </div>
+
+
+
+
+<!--div class="emailer">
+    <form method ="post">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" asp-for="Name" placeholder="Your name..">
+
+        <label for="fname">Email</label>
+        <input type="text" id="email" asp-for="UserEmail" placeholder="Optional...">
+
+        <label for="fname">Phone:</label>
+        <input type="text" id="phone" name="Phone"  placeholder="Optional...">
+
+
+
+        <label for="intension">Why</label>
+        <select id="intension" asp-for="Subject">
+            <option value="suggess">Suggession</option>
+            <option value="recruiting">Recruiting</option>
+            <option value="other">Others</option>
+        </select>
+
+        <label for="subject">Subject</label>
+        <textarea id="subject"  asp-for="TextBox" placeholder="Write something.." style="height:200px"></textarea>
+
+        <button asp-page-handler="SendEmail" type="submit" class="btn btn-success" asp-route-CacheId="@Model.CacheId">Send</button>
+
+    </form>
+
+</div-->
 

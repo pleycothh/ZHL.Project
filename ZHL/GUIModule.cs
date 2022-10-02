@@ -1,9 +1,7 @@
-﻿
-using Autofac;
+﻿using Autofac;
 using ZHL.Library;
 using ZHL.GUI.Provider;
 using ZHL.GUI.Provider.Contracts;
-
 
 namespace ZHL.GUI
 {

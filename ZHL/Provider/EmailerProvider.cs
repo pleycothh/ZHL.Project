@@ -4,13 +4,6 @@ using MailKit.Security;
 using MailKit.Net.Smtp;
 using ZHL.Library.Models;
 using ZHL.GUI.Provider.Contracts;
-using Google.Apis.Auth.OAuth2.Flows;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Util.Store;
-using MailKit.Net.Imap;
-using Google.Apis.Util;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ZHL.GUI.Provider
 {
@@ -25,10 +18,7 @@ namespace ZHL.GUI.Provider
         }
 
         public async Task Sender(EmailClientModel emailClient)
-        {
-
-
-           
+        {  
                var email = new MimeMessage();
                email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
                email.To.Add(MailboxAddress.Parse(emailClient.To));

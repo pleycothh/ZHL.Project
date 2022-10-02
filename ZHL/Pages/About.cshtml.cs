@@ -1,9 +1,5 @@
-using ZHL.GUI.Provider; 
-using ZHL.Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZHL.GUI.Provider.Contracts;
-using System.Text;
 
 namespace ZHL.GUI.Pages
 {
@@ -15,10 +11,7 @@ namespace ZHL.GUI.Pages
 
         }
      
-        
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
-
-
 
         public void OnGet(string cacheId)
         {
@@ -27,7 +20,7 @@ namespace ZHL.GUI.Pages
 
         public IActionResult OnPostSendEmail()
         {
-            /// Send Email to me
+       /// Send Email to me
        //     _emailProvider.Sender(new EmailClientModel("zhuoheng.li1993@qq.com", $"{Subject} - {Name}", TextBox));
        //
        //

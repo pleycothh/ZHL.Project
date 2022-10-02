@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using ZHL.GUI.Provider.Contracts;
+﻿using ZHL.Library.Models;
 using ZHL.Library.Contracts;
-using ZHL.Library.Models;
+using ZHL.GUI.Provider.Contracts;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ZHL.GUI.Provider
 {
@@ -17,7 +17,6 @@ namespace ZHL.GUI.Provider
             _memoryCache = memoryCache;
         }
 
-
         public List<ItemModel> GetItemList(string cacheId)
         {
             cacheId = cacheId is null ? "-1" : cacheId;
@@ -26,7 +25,7 @@ namespace ZHL.GUI.Provider
 
             if (result is null)
             {
-                Console.WriteLine("Item Cache is null, empty item list created");
+            //    Console.WriteLine("Item Cache is null, empty item list created");
                 return new List<ItemModel>();
             }
             return result;
@@ -34,10 +33,8 @@ namespace ZHL.GUI.Provider
 
         public void SetItemList(string userInput, List<FilterItemModel> filterList, string cacheId)
         {
-           // List<ItemModel> items = new();
-            //cacheId = cacheId is null ? "-1" : cacheId;
             userInput = userInput is null ? "NULL" : userInput;
-            Console.WriteLine($"Add item with user input: {userInput}");
+        //    Console.WriteLine($"Add item with user input: {userInput}");
 
             var items = _memoryCache.Get<List<ItemModel>>(cacheId);
             
@@ -49,7 +46,7 @@ namespace ZHL.GUI.Provider
                 {
                     items.AddRange(_mainRunner.Run(userInput, filterList));
                 }
-            Console.WriteLine($"Save Item List to cache with chache Id: {cacheId}");
+        //    Console.WriteLine($"Save Item List to cache with chache Id: {cacheId}");
 
             _memoryCache.Set(cacheId, items);
 
@@ -61,7 +58,6 @@ namespace ZHL.GUI.Provider
             var items = GetItemList("tempId");
 
             items.RemoveAll(x => x.HashId == hashId);
-          //  _memoryCache.Set("tempId", items);
         }
     }
 }

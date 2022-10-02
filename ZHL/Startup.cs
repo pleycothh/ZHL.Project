@@ -1,11 +1,6 @@
 ﻿using Autofac;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System.Text;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace ZHL.GUI
 {
@@ -62,16 +57,6 @@ namespace ZHL.GUI
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
-
-            ///Ensure that you are using Authorization and HttpsRedirection 
-
-         //   app.UseHttpsRedirection();
-         //   app.UseStaticFiles();
-         //
-         //   app.UseRouting();
-         //
-         //   app.UseAuthentication();
-         //   app.UseAuthorization();
         }
     }
 }
