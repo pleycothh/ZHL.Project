@@ -4,6 +4,13 @@ using MailKit.Security;
 using MailKit.Net.Smtp;
 using ZHL.Library.Models;
 using ZHL.GUI.Provider.Contracts;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Util.Store;
+using MailKit.Net.Imap;
+using Google.Apis.Util;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ZHL.GUI.Provider
 {
@@ -21,19 +28,35 @@ namespace ZHL.GUI.Provider
         {
 
 
+           
+               var email = new MimeMessage();
+               email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+               email.To.Add(MailboxAddress.Parse(emailClient.To));
+               email.Subject = emailClient.Subject;
+               email.Body = new TextPart(TextFormat.Html) { Text = emailClient.Body };
+           
+               using var smtp = new SmtpClient();
+               smtp.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
+               smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+               smtp.Send(email);
+               smtp.Disconnect(true);
 
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
-            email.To.Add(MailboxAddress.Parse(emailClient.To));
-            email.Subject = emailClient.Subject;
-            email.Body = new TextPart(TextFormat.Html) { Text = emailClient.Body };
 
-            using var smtp = new SmtpClient();
-            smtp.Connect(_config.GetSection("EmailHost").Value, 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
-            smtp.Send(email);
-            smtp.Disconnect(true);
 
         }
+
+    //    [GoogleScopedAuthorize(DriveService.ScopeConstants.DriveReadonly)]
+    //    public async Task AuthenticateAsync([FromServices] IGoogleAuthProvider auth)
+    //    {
+    //        GoogleCredential? googleCred = await _auth.GetCredentialAsync();
+    //        string token = await googleCred.UnderlyingCredential.GetAccessTokenForRequestAsync();
+    //
+    //        var oauth2 = new SaslMechanismOAuth2("UserEmail", token);
+    //
+    //        using var emailClient = new ImapClient();
+    //        await emailClient.ConnectAsync("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+    //        await emailClient.AuthenticateAsync(oauth2);
+    //        await emailClient.DisconnectAsync(true);
+    //    }
     }
 }

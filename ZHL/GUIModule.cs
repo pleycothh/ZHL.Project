@@ -15,7 +15,7 @@ namespace ZHL.GUI
 
             builder.RegisterType<FilterListProvider>().As<IFilterListProvider>();
             builder.RegisterType<ItemProvider>().As<IItemProvider>();
-            builder.RegisterType<EmailerProvider> ().As<IEmailerProvider>();
+         //   builder.RegisterType<EmailerProvider> ().As<IEmailerProvider>();
         }
     }
 }

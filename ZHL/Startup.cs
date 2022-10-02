@@ -28,6 +28,8 @@ namespace ZHL.GUI
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule<GUIModule>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +62,16 @@ namespace ZHL.GUI
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+
+            ///Ensure that you are using Authorization and HttpsRedirection 
+
+         //   app.UseHttpsRedirection();
+         //   app.UseStaticFiles();
+         //
+         //   app.UseRouting();
+         //
+         //   app.UseAuthentication();
+         //   app.UseAuthorization();
         }
     }
 }
