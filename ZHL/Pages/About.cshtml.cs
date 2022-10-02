@@ -10,22 +10,13 @@ namespace ZHL.GUI.Pages
     
     public class AboutModel : PageModel
     {
-        IEmailerProvider _emailProvider;
-        public AboutModel(IEmailerProvider emailerProvider)
+        public AboutModel()
         {
-            _emailProvider = emailerProvider;
+
         }
      
         
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
-        [BindProperty]
-        public string Name { get; set; }
-        [BindProperty]
-        public string TextBox { get; set; }
-        [BindProperty]
-        public string UserEmail { get; set; }
-        [BindProperty]
-        public string Subject { get; set; }
 
 
 
