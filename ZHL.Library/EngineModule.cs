@@ -14,12 +14,11 @@ namespace ZHL.Library
 
             /// Word2Vec
 
-
             /// Regex Model
             builder.RegisterType<ExactMatch>().As<IRegexIntro>();
-        //    builder.RegisterType<LooseMatchTwo>().As<IRegexIntro>();
-         //   builder.RegisterType<LoosMatchOne>().As<IRegexIntro>();
+        //  builder.RegisterType<LooseMatchTwo>().As<IRegexIntro>();
+        //  builder.RegisterType<LoosMatchOne>().As<IRegexIntro>();
             
         }
-    }// test 
+    }
 }

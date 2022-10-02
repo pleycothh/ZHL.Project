@@ -1,6 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using ZHL.Library.Models;
 using ZHL.Library.Contracts;
-using ZHL.Library.Models;
+using System.Text.RegularExpressions;
 
 namespace ZHL.Library.Plugin.RegexPlugin
 {
