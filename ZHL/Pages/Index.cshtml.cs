@@ -1,9 +1,8 @@
 ﻿using log4net;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZHL.GUI.Provider.Contracts;
 using ZHL.Library.Models;
+using Microsoft.AspNetCore.Mvc;
+using ZHL.GUI.Provider.Contracts;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ZHL.Pages
 {
@@ -11,7 +10,7 @@ namespace ZHL.Pages
     {
         public readonly IItemProvider ItemProvider;
         private readonly IFilterListProvider _filterProvider;
-        private static readonly ILog log = LogManager.GetLogger("file");
+    //    private static readonly ILog log = LogManager.GetLogger("file");
 
         public IndexModel(IItemProvider itemProvider, IFilterListProvider filterProvider)
         {
@@ -37,7 +36,7 @@ namespace ZHL.Pages
 
             itemList = ItemProvider.GetItemList(CacheId);
             FilterList = _filterProvider.GetFilter();
-            Console.WriteLine($"On Get called, Cache Id is : {CacheId}");
+        //    Console.WriteLine($"On Get called, Cache Id is : {CacheId}");
 
         }
 
@@ -47,9 +46,7 @@ namespace ZHL.Pages
         public IActionResult OnPostSetItem()
         {
             FilterList = _filterProvider.GetFilter();
-
-            /// Question: why User input is null??
-            Console.WriteLine($"On Posted called, User input is {UserInput}, Cache Id is : {CacheId}");
+            //Console.WriteLine($"On Posted called, User input is {UserInput}, Cache Id is : {CacheId}");
 
             if(UserInput is not null)
             {
@@ -57,7 +54,6 @@ namespace ZHL.Pages
             }
 
             return RedirectToPage("./Index", new { CacheId });
-            //return Page();
         }
     }
 }

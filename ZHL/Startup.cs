@@ -1,11 +1,6 @@
 ﻿using Autofac;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System.Text;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace ZHL.GUI
 {
@@ -28,6 +23,8 @@ namespace ZHL.GUI
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule<GUIModule>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

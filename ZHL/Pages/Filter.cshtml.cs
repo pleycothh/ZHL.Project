@@ -1,9 +1,7 @@
-using log4net;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZHL.GUI.Provider.Contracts;
 using ZHL.Library.Models;
+using Microsoft.AspNetCore.Mvc;
+using ZHL.GUI.Provider.Contracts;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ZHL.GUI.Pages
 {
@@ -28,8 +26,8 @@ namespace ZHL.GUI.Pages
         public void OnGet(string cacheId)
         {
             CacheId = cacheId;
-            if(filterList.Count > 2)
-                Console.WriteLine(filterList.First().FilterName + "-" + filterList.First().HashId);
+        //    if(filterList.Count > 2)
+        //        Console.WriteLine(filterList.First().FilterName + "-" + filterList.First().HashId);
 
             filterList = _filterProvider.GetFilter();
         }
@@ -44,11 +42,9 @@ namespace ZHL.GUI.Pages
         public IActionResult OnPostAddFilter()
         {
 
-            /// Question: why User input is null??
-            Console.WriteLine($"On Posted AddFilter called, User input is {FilterInput}, Cache Id is : {CacheId}");
+            //Console.WriteLine($"On Posted AddFilter called, User input is {FilterInput}, Cache Id is : {CacheId}");
 
             _filterProvider.AddFilter(FilterInput);
-
 
             return RedirectToPage("./Filter", new { CacheId });
 
