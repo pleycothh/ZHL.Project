@@ -11,11 +11,13 @@ namespace ZHL.GUI.Pages
 
         }
      
-        public string CacheId { get; set; } = "tempId"; //<<-- no user for now
+        public string CacheId { get; set; } = "tempId";
+        public int FilterLevel { get; set; } 
 
-        public void OnGet(string cacheId)
+        public void OnGet(string cacheId, int filterLevel)
         {
             CacheId = cacheId;
+            FilterLevel = filterLevel;
         }
 
         public IActionResult OnPostSendEmail()
@@ -33,7 +35,7 @@ namespace ZHL.GUI.Pages
        //
        //     _emailProvider.Sender(new EmailClientModel(UserEmail, "Thank You!", sb.ToString()));
        //
-            return RedirectToPage("./About", new { CacheId });
+            return RedirectToPage("./About", new { CacheId, FilterLevel });
 
         }
     }
