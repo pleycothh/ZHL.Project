@@ -17,15 +17,17 @@ namespace ZHL.GUI.Pages
 
         [BindProperty]
         public string FilterInput { get; set; }
+        public int FilterLevel { get; set; }
 
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
         public List<FilterItemModel> filterList = new();
 
 
-        public void OnGet(string cacheId)
+        public void OnGet(string cacheId, int filterLevel)
         {
             CacheId = cacheId;
+            FilterLevel = filterLevel;
         //    if(filterList.Count > 2)
         //        Console.WriteLine(filterList.First().FilterName + "-" + filterList.First().HashId);
 
@@ -46,7 +48,7 @@ namespace ZHL.GUI.Pages
 
             _filterProvider.AddFilter(FilterInput);
 
-            return RedirectToPage("./Filter", new { CacheId });
+            return RedirectToPage("./Filter", new { CacheId, FilterLevel });
 
         }
     }

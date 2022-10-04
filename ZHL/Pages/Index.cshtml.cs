@@ -20,6 +20,8 @@ namespace ZHL.Pages
 
         [BindProperty]
         public string UserInput { get; set; }
+        [BindProperty]
+        public int FilterLevel { get; set; } = 5;
 
         public string CacheId { get; set; } = "tempId"; //<<-- no user for now
 
@@ -30,9 +32,10 @@ namespace ZHL.Pages
         /// <summary>
         /// get filterList and itemList from cache all the time
         /// </summary>
-        public void OnGet(string cacheId)
+        public void OnGet(string cacheId, int filterLevel)
         {
-            CacheId = cacheId;
+            CacheId = cacheId is null ? "tempId" : cacheId;
+            FilterLevel = filterLevel < 0 ? 5 : filterLevel;
 
             itemList = ItemProvider.GetItemList(CacheId);
             FilterList = _filterProvider.GetFilter();
@@ -53,7 +56,7 @@ namespace ZHL.Pages
                 ItemProvider.SetItemList(UserInput, FilterList, CacheId);
             }
 
-            return RedirectToPage("./Index", new { CacheId });
+            return RedirectToPage("./Index", new { CacheId, FilterLevel });
         }
     }
 }
