@@ -18,7 +18,7 @@ namespace ZHL.GUI.Controllers
         [HttpGet]
         public string Index()
         {
-            return "test";
+            return "Demo API: https://localhost:7200/api/Item/deleteItem?deleteIndex=asdf-789";
         }
 
 

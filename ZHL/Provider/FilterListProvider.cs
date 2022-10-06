@@ -43,11 +43,13 @@ namespace ZHL.GUI.Provider
             _memoryCache.Set("filter", filter);
         }
 
-        public void DeleteFilter(string hashId)
+        public List<FilterItemModel> DeleteFilter(string hashId)
         {
             var filter = GetFilter();
 
             filter.RemoveAll(x => x.HashId == hashId);
+
+            return filter;
         }
     }
 }

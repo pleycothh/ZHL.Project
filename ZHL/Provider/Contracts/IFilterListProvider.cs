@@ -7,6 +7,6 @@ namespace ZHL.GUI.Provider.Contracts
     {
         List<FilterItemModel> GetFilter();
         void AddFilter(string filterInput);
-        void DeleteFilter(string hashId);
+        List<FilterItemModel> DeleteFilter(string hashId);
     }
 }

@@ -14,14 +14,14 @@ function deleteItem(sender, onFilter) {
 
          console.log(hash + " - Item deleted!");
          Promise.resolve(
-            fetch(`/api/deleteItem/${hash}/`)
+             fetch(`/api/Item/deleteItem?deleteIndex=${hash}/`)
          );
      }
      if (onFilter) {
   
          console.log( hash + " - Filter deleted!");
          Promise.resolve(
-             fetch(`/api/deleteFilter/${hash}/`)
+             fetch(`/api/Item/deleteFilter?deleteIndex=/${hash}/`)
          );
      }
     tr.style.display = 'none';

@@ -1,8 +1,0 @@
-﻿@page "/api/deleteFilter/{hashId}/"
-
-@model ZHL.GUI.Pages.FilterModel
-@{
-    Model._filterProvider.DeleteFilter(
-        RouteData.Values["hashId"] as string
-    );
-}
