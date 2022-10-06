@@ -53,11 +53,13 @@ namespace ZHL.GUI.Provider
         }
 
 
-        public void DeleteItem(string hashId)
+        public List<ItemModel> DeleteItem(string hashId)
         {
             var items = GetItemList("tempId");
 
             items.RemoveAll(x => x.HashId == hashId);
+
+            return items;
         }
     }
 }

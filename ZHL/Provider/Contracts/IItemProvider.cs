@@ -6,6 +6,6 @@ namespace ZHL.GUI.Provider.Contracts
     {
         List<ItemModel> GetItemList(string cacheId);
         void SetItemList(string userInput, List<FilterItemModel> filterList, string cacheId);
-        void DeleteItem(string hashId);
+        List<ItemModel> DeleteItem(string hashId);
     }
 }

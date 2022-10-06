@@ -16,17 +16,19 @@ namespace ZHL.GUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
            // services.AddElectron(); <- optional for Electron 
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule<GUIModule>();
-
-
+    
+    
         }
-
+    
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
